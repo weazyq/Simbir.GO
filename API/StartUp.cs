@@ -1,5 +1,7 @@
 ﻿using API.Tools;
+using EF;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -9,6 +11,11 @@ public static class StartUp
 {
     public static void Initialize(IServiceCollection services, IConfiguration configuration)
     {
+        services.AddDbContext<DataContext>(options =>
+        {
+            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
+        });
+
         services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
         services.AddSwaggerGen();
 
