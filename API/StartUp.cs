@@ -10,6 +10,7 @@ public static class StartUp
     public static void Initialize(IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JWTSettings>(configuration.GetSection("JWTSettings"));
+        services.AddSwaggerGen();
 
         String? secretKey = configuration.GetSection("JWTSettings:SecretKey").Value;
 
@@ -37,6 +38,36 @@ public static class StartUp
                 IssuerSigningKey = jwtSettings.SigningKey,
                 ValidateLifetime = true,
             };
+        });
+    }
+
+    public static void AddSwaggerGen(this IServiceCollection services)
+    {
+        services.AddSwaggerGen(options =>
+        {
+            options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.Http,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "Please enter token"
+            });
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type=ReferenceType.SecurityScheme,
+                            Id="Bearer"
+                        }
+                    },
+                    new List<String>()
+                }
+            });
         });
     }
 
