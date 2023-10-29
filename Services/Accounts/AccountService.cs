@@ -21,4 +21,9 @@ public class AccountService : IAccountService
     {
         return _accountRepository.SignUp(username, password);
     }
+
+    public Result Update(Account account)
+    {
+        return _accountRepository.Update(account);
+    }
 }

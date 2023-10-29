@@ -20,7 +20,7 @@ public class AccountRepository : IAccountRepository
 
     public Result SignUp(String username, String password)
     {
-        AccountEntity account = new AccountEntity
+        AccountEntity account = new()
         {
             UserName = username,
             Password = password
@@ -28,13 +28,32 @@ public class AccountRepository : IAccountRepository
 
         try
         {
-            _dbRepository.Add<AccountEntity>(account);
+            _dbRepository.Add(account);
             _dbRepository.SaveChanges();
             return Result.Success();
         }
         catch (Exception)
         {
             return Result.Fail("Не удалось сохранить аккаунт");
+        }
+    }
+
+    public Result Update(Account account)
+    {
+        try
+        {
+            AccountEntity accountEntity = _dbRepository.Get<AccountEntity>(e => e.Id == account.Id).First();
+
+            accountEntity.UserName = account.UserName;
+            accountEntity.Password = account.Password;
+
+            _dbRepository.Update(accountEntity);
+            _dbRepository.SaveChanges();
+            return Result.Success();
+        } 
+        catch (Exception ex)
+        {
+            return Result.Fail("Ошибка обновления данных о пользователе");
         }
     }
 }

@@ -71,4 +71,18 @@ public class AccountController : Controller
 
         return _accountsService.SignUp(request.UserName, HashPasswordTool.HashPassword(request.Password));
     }
+
+    public record UpdateRequest(String UserName, String Password);
+    [Authorize]
+    [HttpPut("Update")]
+    public Result Update([FromBody] UpdateRequest request)
+    {
+        Account? account = _accountsService.GetAccount(User.Identity.Name);
+        if (account is null) return Result.Fail($"Аккаунт с логином {request.UserName} удалён или не существует");
+
+        account.UserName = request.UserName;
+        account.Password = HashPasswordTool.HashPassword(request.Password);
+
+        return _accountsService.Update(account);
+    }
 }
