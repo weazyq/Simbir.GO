@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Services.Configurator;
 
 namespace API;
 
@@ -11,6 +12,7 @@ public static class StartUp
 {
     public static void Initialize(IServiceCollection services, IConfiguration configuration)
     {
+        services.Initialize();
         services.AddDbContext<DataContext>(options =>
         {
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection"));
