@@ -1,8 +1,9 @@
 ﻿using Domain.Accounts;
-using System.Security.Principal;
+using Tools.Result;
 
 namespace Services.Accounts.Repositories;
 public interface IAccountRepository
 {
     public Account? GetAccount(String username);
+    public Result SignUp(String username, String password);
 }
