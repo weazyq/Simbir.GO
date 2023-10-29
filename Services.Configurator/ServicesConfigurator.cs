@@ -11,5 +11,12 @@ public static class ServicesConfigurator
     public static void Initialize(this IServiceCollection services)
     {
         services.AddScoped<IDbRepository, DbRepository>();
+
+        #region Accounts
+
+        services.AddTransient<IAccountService, AccountService>();
+        services.AddTransient<IAccountRepository, AccountRepository>();
+
+        #endregion
     }
 }
