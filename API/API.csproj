@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\EF\EF.csproj" />
+    <ProjectReference Include="..\Services.Configurator\Services.Configurator.csproj" />
   </ItemGroup>
 
 </Project>
