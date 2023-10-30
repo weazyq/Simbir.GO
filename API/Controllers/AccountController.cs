@@ -48,7 +48,8 @@ public class AccountController : Controller
         List<Claim> claims = new()
         {
             new Claim(ClaimTypes.Name, account.UserName),
-            new Claim(ClaimTypes.Role, "Admin")
+            new Claim(ClaimTypes.Role, "Admin"),
+            new Claim("Id", $"{account.Id}"),
         };
 
         //срок действия токена
@@ -66,9 +67,6 @@ public class AccountController : Controller
     [HttpPost("SignUp")]
     public Result SignUp([FromBody] SignUpRequest request)
     {
-        Account? account = _accountsService.GetAccount(request.UserName);
-        if (account is not null) return Result.Fail($"Аккаунт с логином {request.UserName} уже зарегистрирован в системе");
-
         return _accountsService.SignUp(request.UserName, HashPasswordTool.HashPassword(request.Password));
     }
 
@@ -77,12 +75,6 @@ public class AccountController : Controller
     [HttpPut("Update")]
     public Result Update([FromBody] UpdateRequest request)
     {
-        Account? account = _accountsService.GetAccount(User.Identity.Name);
-        if (account is null) return Result.Fail($"Аккаунт с логином {request.UserName} удалён или не существует");
-
-        account.UserName = request.UserName;
-        account.Password = HashPasswordTool.HashPassword(request.Password);
-
-        return _accountsService.Update(account);
+        return _accountsService.Update(request.UserName, request.Password);
     }
 }
