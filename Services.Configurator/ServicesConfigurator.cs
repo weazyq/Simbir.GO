@@ -3,6 +3,8 @@ using EF.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Accounts;
 using Services.Accounts.Repositories;
+using Services.Transports;
+using Services.Transports.Repositories;
 
 namespace Services.Configurator;
 
@@ -16,6 +18,13 @@ public static class ServicesConfigurator
 
         services.AddTransient<IAccountService, AccountService>();
         services.AddTransient<IAccountRepository, AccountRepository>();
+
+        #endregion
+
+        #region Transports
+
+        services.AddTransient<ITransportService, TransportService>();
+        services.AddTransient<ITransportRepository, TransportRepository>();
 
         #endregion
     }
