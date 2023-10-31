@@ -3,6 +3,9 @@ using EF.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Services.Accounts;
 using Services.Accounts.Repositories;
+using Services.Payments;
+using Services.Payments.Repositorie;
+using Services.Payments.Repositories;
 using Services.Transports;
 using Services.Transports.Repositories;
 
@@ -25,6 +28,13 @@ public static class ServicesConfigurator
 
         services.AddTransient<ITransportService, TransportService>();
         services.AddTransient<ITransportRepository, TransportRepository>();
+
+        #endregion
+
+        #region Payment
+
+        services.AddTransient<IPaymentService, PaymentService>();
+        services.AddTransient<IPaymentRepository, PaymentRepository>();
 
         #endregion
     }
