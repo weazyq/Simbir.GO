@@ -48,7 +48,7 @@ public class AccountController : Controller
         List<Claim> claims = new()
         {
             new Claim(ClaimTypes.Name, account.UserName),
-            new Claim(ClaimTypes.Role, "Admin"),
+            new Claim(ClaimTypes.Role, account.IsAdmin ? "Admin" : "User"),
             new Claim("Id", $"{account.Id}"),
         };
 
