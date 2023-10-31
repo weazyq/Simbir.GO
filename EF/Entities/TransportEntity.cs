@@ -10,8 +10,8 @@ public class TransportEntity
     public String Color { get; set; }
     public String Identifier { get; set; }
     public String? Description { get; set; }
-    public Decimal Latitude { get; set; }
-    public Decimal Longitude { get; set; }
+    public Double Latitude { get; set; }
+    public Double Longitude { get; set; }
     public Decimal? MinutePrice { get; set; }
     public Decimal? DayPrice { get; set; }
 }

@@ -10,13 +10,13 @@
         public String Color { get; set; }
         public String Identifier { get; set; }
         public String? Description { get; set; }
-        public Decimal Latitude { get; set; }
-        public Decimal Longitude { get; set; }
+        public Double Latitude { get; set; }
+        public Double Longitude { get; set; }
         public Decimal? MinutePirce { get; set; }
         public Decimal? DayPrice { get; set; }
 
         public Transport(Int64 id, Int64 ownerId, Boolean canBeRented, TransportType transportType, String model, String color,
-            String identifier, String? description, Decimal latitude, Decimal longitude, Decimal? minutePirce, Decimal? dayPrice)
+            String identifier, String? description, Double latitude, Double longitude, Decimal? minutePirce, Decimal? dayPrice)
         {
             ID = id;
             OwnerId = ownerId;
