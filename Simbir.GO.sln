@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services.Configurator", "Se
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{37613ACB-0F68-47A4-AA7C-E1734786E217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tools", "Tools\Tools.csproj", "{7A4BE372-05DC-4BCD-8671-E54B4B74DECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools", "Tools\Tools.csproj", "{7A4BE372-05DC-4BCD-8671-E54B4B74DECE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Run", "Run\Run.csproj", "{E54DF3F8-A180-4903-BE2E-F48D9C166EAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{7A4BE372-05DC-4BCD-8671-E54B4B74DECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A4BE372-05DC-4BCD-8671-E54B4B74DECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A4BE372-05DC-4BCD-8671-E54B4B74DECE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E54DF3F8-A180-4903-BE2E-F48D9C166EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E54DF3F8-A180-4903-BE2E-F48D9C166EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E54DF3F8-A180-4903-BE2E-F48D9C166EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E54DF3F8-A180-4903-BE2E-F48D9C166EAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
