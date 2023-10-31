@@ -18,6 +18,11 @@ public class AccountRepository : IAccountRepository
         return _dbRepository.Get<AccountEntity>(e => e.UserName == username).FirstOrDefault()?.ToDomain();
     }
 
+    public Account? GetAccount(Int64 accountId)
+    {
+        return _dbRepository.Get<AccountEntity>(e => e.Id == accountId).FirstOrDefault()?.ToDomain();
+    }
+
     public Result SignUp(String username, String password)
     {
         AccountEntity account = new()
