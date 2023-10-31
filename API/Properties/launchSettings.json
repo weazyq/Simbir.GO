@@ -1,7 +1,7 @@
 {
   "profiles": {
     "API": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
@@ -9,14 +9,6 @@
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7082;http://localhost:5073"
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
     }
   },
   "$schema": "https://json.schemastore.org/launchsettings.json",
